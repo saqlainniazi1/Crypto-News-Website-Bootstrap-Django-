@@ -1,0 +1,75 @@
+{% extends 'crypto/base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1 class="display-4"> Welcome to Crypto News Network! </h1>
+  <p class="lead">Latest Cryptocurrency and Blockchain News.</p>
+</div>
+
+
+<table class="table table-dark table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">24h High</th>
+      <th scope="col">24h Low</th>
+        <th scope="col">Market Cap</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for key, value in price_data.DISPLAY.items %}
+    <tr>
+      <td>{{ key }}</td>
+      <td>{{ value.USD.PRICE }}</td>
+      <td>{{ value.USD.HIGH24HOUR }}</td>
+        <td>{{ value.USD.LOW24HOUR }}</td>
+        <td>{{ value.USD.MKTCAP }}</td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+
+</table>
+
+
+
+<!--<h1>{{ data.Data }}</h1>-->
+
+
+<div class="container">
+    <div class="row">
+        {% for x in news_data.Data %}
+        <div class="col-sm">
+    <div class="card" style="width: 18rem;">
+      <img src="{{ x.imageurl }}" class="card-img-top" alt="image">
+      <div class="card-body">
+        <h5 class="card-title">{{ x.title }}</h5>
+        <p class="card-text">{{ x.body }}</p>
+        <a href="{{ x.url }}" class="btn btn-primary">Read more</a>
+      </div>
+    </div>
+            <br>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+<ul>
+    {% for x in data.Data %}
+        <li>{{ x.id }}</li>
+        <li>{{ x.guid }}</li>
+        <li>{{ x.title }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+
+
+
+
+
+
